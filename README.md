@@ -4,12 +4,12 @@
 
 ![Saw Gif](https://media.giphy.com/media/3fiohCfMJAKf7lhnPp/giphy.gif)
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/TylerBrock/saw)](https://goreportcard.com/report/github.com/TylerBrock/saw)
+[![Go Report Card](https://goreportcard.com/badge/github.com/logandavies181/slaw)](https://goreportcard.com/report/github.com/logandavies181/slaw)
 
 ## Run from Docker
 
 ```sh
-docker run --rm -it -v ~/.aws:$HOME/.aws tbrock/saw
+docker run --rm -it -v ~/.aws:$HOME/.aws logie/slaw
 ```
 
 ## Installation
@@ -17,7 +17,7 @@ docker run --rm -it -v ~/.aws:$HOME/.aws tbrock/saw
 ### Mac OS X
 
 ```sh
-brew tap TylerBrock/saw
+brew tap logandavies181/slaw
 brew install saw
 ```
 
@@ -56,7 +56,7 @@ sudo dpkg -i <the_deb_name>
 
 - [Install go](https://golang.org/doc/install)
 - Configure your `GOPATH` and add `$GOPATH/bin` to your path
-- Run `go get -u github.com/TylerBrock/saw`
+- Run `go install github.com/logandavies181/slaw@latest`
 
 #### Windows Specifics
 
