@@ -14,58 +14,7 @@ docker run --rm -it -v ~/.aws:$HOME/.aws logie/slaw
 
 ## Installation
 
-### Mac OS X
-
-```sh
-brew tap logandavies181/slaw
-brew install saw
-```
-
-### Linux
-
-#### Arch Linux (source)
-
-```sh
-# Using pacaur
-pacaur -S saw
-
-# Using trizen
-trizen -S saw
-
-# Using yaourt
-yaourt -S saw
-
-# Using makepkg
-git clone https://aur.archlinux.org/saw.git
-cd saw
-makepkg -sri
-```
-
-#### Red Hat Based Distributions (Fedora/RHEL/CentOS/Amazon Linux)
-```sh
-rpm -i <link_to_rpm_you_need_from_releases>
-```
-
-#### Debian Based Distributions (Debian/Ubuntu)
-```sh
-wget <link_to_deb_you_need_from_releases>
-sudo dpkg -i <the_deb_name>
-```
-
-### Manual Install/Update
-
-- [Install go](https://golang.org/doc/install)
-- Configure your `GOPATH` and add `$GOPATH/bin` to your path
-- Run `go install github.com/logandavies181/slaw@latest`
-
-#### Windows Specifics
-
-- Add %GOPATH%/bin to your path (optional)
-- Run from gopath/bin (If not in your path)
-    ```DOS .bat
-    cd %GOPATH%/bin
-    saw ...
-    ```
+Download the applicable file for your OS from [releases](https://github.com/logandavies181/slaw/releases/latest)
 
 ## Usage
 
@@ -100,6 +49,15 @@ sudo dpkg -i <the_deb_name>
 
     # Get production log group for api between 26th June 2018 and 28th June 2018
     saw get production --prefix api --start 2018-06-26 --stop 2018-06-28
+    ```
+
+- Query
+    ```sh
+    # Query production and staging log groups for the last 2 hours and filter for "error"
+    saw query 'error' --groups production --groups staging --start -2h
+
+    # Run a more complicated Logs Insights query
+    saw query 'FIELDS @timestamp, @message | FILTER @message like /Exception/' --groups production
     ```
 
 ## Features
