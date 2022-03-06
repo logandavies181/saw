@@ -13,15 +13,18 @@ var queryConfig config.Configuration
 var queryOutputConfig config.OutputConfiguration
 
 var queryCommand = &cobra.Command{
-	Use:   "query",
+	Use:   "query '<Logs Insights query>'",
 	Short: "Query CloudWatch Logs Insights",
 	Long:  "",
-	Run: func(cmd *cobra.Command, args []string) {
-		b := blade.NewBlade(&queryConfig, &awsConfig, &queryOutputConfig)
-		if queryConfig.Query == "" {
-			fmt.Println("--query must be set")
-			os.Exit(2)
+	Args: func(cmd *cobra.Command, args []string) error {
+		if len(args) != 1 {
+			return fmt.Errorf("query argument required")
 		}
+		return nil
+	},
+	Run: func(cmd *cobra.Command, args []string) {
+		queryConfig.Query = args[0]
+		b := blade.NewBlade(&queryConfig, &awsConfig, &queryOutputConfig)
 		if len(queryConfig.Groups) == 0 {
 			fmt.Println("--groups must be defined at least once")
 			os.Exit(2)
@@ -33,7 +36,6 @@ var queryCommand = &cobra.Command{
 
 func init() {
 	queryCommand.Flags().StringSliceVar(&queryConfig.Groups, "groups", []string{}, "CloudWatch Log Groups to query against")
-	queryCommand.Flags().StringVar(&queryConfig.Query, "query", "", "CloudWatch Logs Insights query to run")
 	queryCommand.Flags().StringVar(
 		&queryConfig.Start,
 		"start",
