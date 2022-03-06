@@ -207,6 +207,11 @@ func (b *Blade) RunQuery() {
 	table.SetRowSeparator("")
 	table.SetTablePadding("\t")
 
+	if len(queryResultsOutput.Results) == 0 {
+		fmt.Fprintln(os.Stderr, "No results")
+		os.Exit(3)
+	}
+
 	firstRow := queryResultsOutput.Results[0]
 	headers := make([]string, len(firstRow)-1)
 	for i := 0; i < len(firstRow)-1; i++ {
