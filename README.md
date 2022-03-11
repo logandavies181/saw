@@ -1,12 +1,14 @@
-# Saw
+# Slaw
 
-`saw` is a multi-purpose tool for AWS CloudWatch Logs
+This is a fork of the multi-purpose tool for AWS CloudWatch Logs called [saw](https://github.com/TylerBrock/saw)
 
 ![Saw Gif](https://media.giphy.com/media/3fiohCfMJAKf7lhnPp/giphy.gif)
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/logandavies181/slaw)](https://goreportcard.com/report/github.com/logandavies181/slaw)
 
 ## Run from Docker
+
+TODO!
 
 ```sh
 docker run --rm -it -v ~/.aws:$HOME/.aws logie/slaw
