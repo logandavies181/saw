@@ -1,4 +1,4 @@
-module github.com/TylerBrock/saw
+module github.com/logandavies181/slaw
 
 go 1.17
 
