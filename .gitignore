@@ -1,5 +1,6 @@
 vendor
 dist
 saw
+!saw/
 
 dist/
